@@ -17,6 +17,7 @@
     <dubbo:registry protocol="zookeeper" address="192.168.178.98:2181"/>
     <dubbo:reference interface="com.taotao.service.TestService" timeout="3000" id="testService" />
     <dubbo:reference interface="com.taotao.service.ItemService" timeout="3000" id="itemService" />
+    <dubbo:reference interface="com.taotao.service.ItemCatService" timeout="3000" id="itemCatService" />
     <!-- 资源映射 -->
     <!-- 指定/WEB-INF/js/ /WEB-INF/css/ 下的所有的静态资源包括子目录下的静态资源 都不会拦截 -->
     <mvc:resources location="/WEB-INF/js/" mapping="/js/**"/>
