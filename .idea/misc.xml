@@ -2,8 +2,11 @@
 <project version="4">
   <component name="FrameworkDetectionExcludesConfiguration">
     <file type="web" url="file://$PROJECT_DIR$/com-manager-web" />
+    <file type="web" url="file://$PROJECT_DIR$/taotao-content/taotao-content-service" />
+    <file type="web" url="file://$PROJECT_DIR$/taotao-manager-web" />
     <file type="web" url="file://$PROJECT_DIR$/taotao-manager/taotao-manager-service" />
     <file type="web" url="file://$PROJECT_DIR$/taotao-portal-web" />
+    <type id="Spring" />
   </component>
   <component name="JavaScriptSettings">
     <option name="languageLevel" value="ES6" />
@@ -16,6 +19,8 @@
         <option value="$PROJECT_DIR$/taotao-parent/pom.xml" />
         <option value="$PROJECT_DIR$/com-manager-web/pom.xml" />
         <option value="$PROJECT_DIR$/taotao-portal-web/pom.xml" />
+        <option value="$PROJECT_DIR$/taotao-content/pom.xml" />
+        <option value="$PROJECT_DIR$/taotao-manager-web/pom.xml" />
       </list>
     </option>
   </component>
