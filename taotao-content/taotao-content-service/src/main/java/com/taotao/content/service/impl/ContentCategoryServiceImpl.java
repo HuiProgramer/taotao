@@ -78,4 +78,11 @@ public class ContentCategoryServiceImpl implements ContentCategoryService {
         mapper.updateByPrimaryKeySelective(contentCategory);
         return TaotaoResult.ok(contentCategory);
     }
+
+    //删除节点
+    @Override
+    public TaotaoResult deleteContentCategory(Long Id) {
+        mapper.deleteByPrimaryKey(Id);
+        return TaotaoResult.ok();
+    }
 }

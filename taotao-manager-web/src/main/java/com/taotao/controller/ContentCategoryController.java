@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import java.util.List;
 
 @Controller
-public class ContentCategoayController {
+public class ContentCategoryController {
 
     @Autowired
     private ContentCategoryService service;
@@ -56,5 +56,16 @@ public class ContentCategoayController {
     @ResponseBody
     public TaotaoResult updateContentCategory(@RequestParam(value = "id") Long Id,String name){
         return service.updateContentCategory(Id,name);
+    }
+
+    //content/category/delete
+    //method=post
+    //参数:
+    //Id:就是节点的Id
+    //返回值taotaoresult 包含分类的id
+    @RequestMapping(value = "content/category/delete",method = RequestMethod.POST)
+    @ResponseBody
+    public TaotaoResult deleteContentCategory(@RequestParam(value = "id") Long Id){
+        return service.deleteContentCategory(Id);
     }
 }

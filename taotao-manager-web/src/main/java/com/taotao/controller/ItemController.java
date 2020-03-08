@@ -1,6 +1,7 @@
 package com.taotao.controller;
 
 import com.taotao.common.pojo.EasyUIDataGridResult;
+import com.taotao.common.pojo.TaotaoParams;
 import com.taotao.common.pojo.TaotaoResult;
 import com.taotao.common.util.JsonUtils;
 import com.taotao.pojo.TbItem;
@@ -10,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -92,5 +94,37 @@ public class ItemController {
         //2.注入服务
         //3.调用
         return itemService.saveItem(item, desc);
+    }
+
+    //更新商品的方法
+    //url:：item/update
+    //参数：tbitem ,desc
+    //返回值 json
+    //method:post
+    @RequestMapping(value = "item/update",method = RequestMethod.POST)
+    @ResponseBody
+    public TaotaoResult updateItem(TbItem item, String desc){
+        return itemService.updateItem(item,desc);
+    }
+
+    //更新商品的方法
+    //url:：item/update
+    //参数：tbitem ,desc
+    //返回值 json
+    //method:post
+    @RequestMapping(value = "item/delete",method = RequestMethod.POST)
+    @ResponseBody
+    public TaotaoResult deleteItem(TaotaoParams params){
+        return itemService.deleteItem(params.getIds());
+    }
+    //商品描述回显
+    //url:/rest/item/query/item/desc/
+    //参数：data.id
+    //返回值：json
+    //method:get
+    @RequestMapping(value="/rest/item/query/item/desc/{id}",method = RequestMethod.GET)
+    @ResponseBody
+    public TaotaoResult showDesc(@PathVariable String id){
+        return  itemService.showDesc(id);
     }
 }

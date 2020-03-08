@@ -1,11 +1,14 @@
 package com.taotao.web.util;
 
+import org.csource.common.MyException;
 import org.csource.common.NameValuePair;
 import org.csource.fastdfs.ClientGlobal;
 import org.csource.fastdfs.StorageClient1;
 import org.csource.fastdfs.StorageServer;
 import org.csource.fastdfs.TrackerClient;
 import org.csource.fastdfs.TrackerServer;
+
+import java.io.IOException;
 
 public class FastDFSClient {
 
@@ -71,5 +74,20 @@ public class FastDFSClient {
 	
 	public String uploadFile(byte[] fileContent, String extName) throws Exception {
 		return uploadFile(fileContent, extName, null);
+	}
+
+	/**
+	 * 删除文件方法
+	 * **/
+	public int deleteFile(String group,String filePath)  {
+			int result = -1;
+		try {
+			result = storageClient.delete_file(group,filePath);
+		} catch (IOException e) {
+			e.printStackTrace();
+		} catch (MyException e) {
+			e.printStackTrace();
+		}
+		return result;
 	}
 }

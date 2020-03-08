@@ -66,9 +66,10 @@ var TT = TAOTAO = {
     initPicUpload : function(data){
     	$(".picFileUpload").each(function(i,e){
     		var _ele = $(e);
+    		if(!data.pics){
     		_ele.siblings("div.pics").remove();
     		_ele.after('<div class="pics"><ul></ul></div>');
-    		
+      	  }
         	//给“上传图片按钮”绑定click事件
         	$(e).click(function(){
         		var form = $(this).parentsUntil("form").parent("form");
@@ -125,7 +126,7 @@ var TT = TAOTAO = {
     			    				
     			    				$(_win).window('close');
     			    				if(data && data.fun){
-    			    					alert(data);
+    			    					// alert(data);
     			    					data.fun.call(this,node);
     			    				}
     			    			}

@@ -20,4 +20,9 @@ public interface ContentCategoryService {
      * @param name 新增节点的名称
      * */
     public TaotaoResult updateContentCategory(Long Id,String name);
+
+    /**
+     * @param Id 节点的id
+     * */
+    public TaotaoResult deleteContentCategory(Long Id);
 }

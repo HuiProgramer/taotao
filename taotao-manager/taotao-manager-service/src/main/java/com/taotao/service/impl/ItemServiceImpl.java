@@ -41,7 +41,6 @@ public class ItemServiceImpl implements ItemService {
         EasyUIDataGridResult result = new EasyUIDataGridResult();
         result.setTotal((int)pageInfo.getTotal());
         result.setRows(list);
-
         return result;
     }
     @Override
@@ -68,4 +67,35 @@ public class ItemServiceImpl implements ItemService {
         //5.返回taotaoresult
         return TaotaoResult.ok();
     }
+
+    //商品删除操作
+    @Override
+    public TaotaoResult deleteItem(List<Long> ids) {
+        for (Long id:ids
+             ) {
+            mapper.deleteByPrimaryKey(id);
+        }
+        return TaotaoResult.ok();
+    }
+
+    //商品更新操作
+    @Override
+    public TaotaoResult updateItem(TbItem tbItem, String desc) {
+        tbItem.setUpdated(new Date());
+        TbItemDesc desc1 = new TbItemDesc();
+        desc1.setItemDesc(desc);
+        desc1.setUpdated(new Date());
+        mapper.updateByPrimaryKeySelective(tbItem);
+        descmapper.updateByPrimaryKeySelective(desc1);
+        return TaotaoResult.ok();
+    }
+
+    //商品描述回显
+    @Override
+    public TaotaoResult showDesc(String id) {
+        TbItemDesc tbItemDesc = descmapper.selectByPrimaryKey(Long.parseLong(id));
+        return TaotaoResult.ok(tbItemDesc);
+    }
+
+
 }

@@ -20,7 +20,7 @@ public class TestFast {
 	public void testupload()throws Exception{
 		//1.创建一个配置文件  配置连接tracker的服务器地址
 		//2.初始化加载配置文件
-		ClientGlobal.init("E:\\Java_work\\taotao\\com-manager-web\\src\\main\\resources\\fastdfs.conf");
+		ClientGlobal.init("E:\\Java_work\\taotao\\taotao-manager-web\\src\\main\\resources\\fastdfs.conf");
 		//3.创建trackerClient对象
 		TrackerClient client = new TrackerClient();
 		//4.通过trackerClient获取trackerServer对象
@@ -57,5 +57,11 @@ public class TestFast {
 		EasyUIDataGridResult itemList = itemservice.getItemList(1, 30);
 		System.out.println(itemList.toString());
 		
+	}
+	@Test
+	public void testdeleteimage() throws Exception{
+		FastDFSClient client = new FastDFSClient("E:\\Java_work\\taotao\\taotao-manager-web\\src\\main\\resources\\fastdfs.conf");
+		int deleteFile = client.deleteFile("group1","M00/00/00/wKiyWF5dBlGAAvrcAAQ5kS3Leqo466.png");
+		System.out.println(deleteFile);
 	}
 }
