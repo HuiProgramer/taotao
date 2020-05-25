@@ -27,6 +27,9 @@
         <fileset id="fileset3" name="ApplicationContext Solr" removed="false">
           <file>file://$MODULE_DIR$/src/main/resources/spring/applicationContext-solr.xml</file>
         </fileset>
+        <fileset id="fileset4" name="ApplicationContext Activemq" removed="false">
+          <file>file://$MODULE_DIR$/src/main/resources/spring/applicationContext-activemq.xml</file>
+        </fileset>
       </configuration>
     </facet>
   </component>
@@ -73,6 +76,7 @@
     <orderEntry type="library" name="Maven: jline:jline:0.9.94" level="project" />
     <orderEntry type="library" name="Maven: io.netty:netty:3.7.0.Final" level="project" />
     <orderEntry type="library" name="Maven: com.github.sgroschupf:zkclient:0.1" level="project" />
+    <orderEntry type="library" name="Maven: org.apache.activemq:activemq-all:5.13.0" level="project" />
     <orderEntry type="library" name="Maven: org.apache.solr:solr-solrj:4.10.3" level="project" />
     <orderEntry type="library" name="Maven: commons-io:commons-io:2.3" level="project" />
     <orderEntry type="library" name="Maven: org.apache.httpcomponents:httpclient:4.3.5" level="project" />

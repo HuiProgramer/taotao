@@ -17,6 +17,12 @@
         <artifactId>taotao-content-interface</artifactId>
         <version>0.0.1-SNAPSHOT</version>
     </dependency>
+    <!-- httpclient -->
+    <dependency>
+        <groupId>org.apache.httpcomponents</groupId>
+        <artifactId>httpclient</artifactId>
+        <version>${httpclient.version}</version>
+    </dependency>
     <!-- Spring -->
     <dependency>
         <groupId>org.springframework</groupId>
@@ -101,6 +107,7 @@
         <groupId>com.github.sgroschupf</groupId>
         <artifactId>zkclient</artifactId>
     </dependency>
+
 </dependencies>
     <!-- 配置tomcat插件 -->
     <build>

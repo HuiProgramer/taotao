@@ -14,4 +14,8 @@ public interface SearchService {
      * @return
      */
     public SearchResult search(String queryString, Integer page, Integer rows) throws Exception;
+
+
+    //更新solr库
+    public TaotaoResult updateSearchItemById(Long itemId) throws  Exception;
 }

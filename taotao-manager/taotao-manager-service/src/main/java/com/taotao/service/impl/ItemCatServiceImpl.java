@@ -2,6 +2,8 @@ package com.taotao.service.impl;
 
 import com.taotao.common.pojo.EasyUITreeNode;
 import com.taotao.mapper.TbItemCatMapper;
+import com.taotao.pojo.CatNode;
+import com.taotao.pojo.ItemCatResult;
 import com.taotao.pojo.TbItemCat;
 import com.taotao.pojo.TbItemCatExample;
 import com.taotao.service.ItemCatService;
@@ -38,4 +40,45 @@ public class ItemCatServiceImpl implements ItemCatService {
         //6.返回
         return nodes;
     }
+
+    @Override
+    public ItemCatResult getItemCatList() {
+        //调用递归方法查询商品分类列表
+        List catlist = getItemcatList(0l);
+        //返回结果
+        ItemCatResult itemCatResult = new ItemCatResult();
+        itemCatResult.setData(catlist);
+        return itemCatResult;
+    }
+
+    private List getItemcatList(Long parentId){
+        //根据parentId查询列表
+        TbItemCatExample example = new TbItemCatExample();
+        example.createCriteria().andParentIdEqualTo(parentId);
+        //执行查询
+        List<TbItemCat> tbItemCats = catmapper.selectByExample(example);
+        List resultList  = new ArrayList();
+        for(TbItemCat tbItemCat : tbItemCats){
+            //如果是父节点
+            if(tbItemCat.getIsParent()){
+                CatNode node = new CatNode();
+                node.setUrl("/products/"+tbItemCat.getId()+".html");
+                //如果当前节点为一级节点
+                if(tbItemCat.getParentId() == 0)
+                    node.setName("<a href = '/products/'"+tbItemCat.getId()+".html>"+tbItemCat.getName()+"</a>");
+                else
+                    node.setName(tbItemCat.getName());
+                node.setItems(getItemcatList(tbItemCat.getId()));
+                //把node添加到列表
+                resultList.add(node);
+            }
+            else {
+                //如果是叶子节点
+                String item = "/products/"+tbItemCat.getId()+".html|"+tbItemCat.getName();
+                resultList.add(item);
+            }
+        }
+        return resultList;
+    }
+
 }

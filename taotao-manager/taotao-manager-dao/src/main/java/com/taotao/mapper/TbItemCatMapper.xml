@@ -86,6 +86,11 @@
       order by ${orderByClause}
     </if>
   </select>
+  <select id="selectNameByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long">
+    select name,parent_id
+    from tb_item_cat
+    where id =  #{id,jdbcType=BIGINT};
+  </select>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
     select 
     <include refid="Base_Column_List" />

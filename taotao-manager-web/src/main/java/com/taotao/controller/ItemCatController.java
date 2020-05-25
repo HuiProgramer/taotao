@@ -1,8 +1,12 @@
 package com.taotao.controller;
 
 import com.taotao.common.pojo.EasyUITreeNode;
+import com.taotao.common.util.JsonUtils;
+import com.taotao.pojo.ItemCatResult;
 import com.taotao.service.ItemCatService;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -26,5 +30,18 @@ public class ItemCatController {
         //3.调用方法
         List<EasyUITreeNode> list = catservice.getItemCatListByParentId(parentId);
         return list;
+    }
+
+    @RequestMapping(value = "/rest/itemcat/list",produces = MediaType.APPLICATION_JSON_VALUE+";charset=utf-8")
+    @ResponseBody
+    public String getItemCatList(String callback){
+        ItemCatResult result = catservice.getItemCatList();
+        //判断是否为空
+        if(StringUtils.isBlank(callback))
+            return JsonUtils.objectToJson(result);
+
+        // 如果字符串不为空，需要支持jsonp调用
+        //需要把result转换成字符串
+        return callback + "(" + JsonUtils.objectToJson(result) + ");";
     }
 }

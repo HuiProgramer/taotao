@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:util="http://www.springframework.org/schema/util"
+	   xmlns:c="http://www.springframework.org/schema/c"
+	   xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.2.xsd http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd">
+	<!--&lt;!&ndash;配置单机版的&ndash;&gt;-->
+	<!--<bean class="redis.clients.jedis.JedisPool" c:host="192.168.178.98" c:port="6379"/>-->
+	<!--<bean class="com.taotao.content.service.impl.JedisClientPool"/>-->
+	<!--配置集群版的-->
+	<util:set id="nodes">
+		<bean class="redis.clients.jedis.HostAndPort" c:host="192.168.178.88" c:port="7001"/>
+		<bean class="redis.clients.jedis.HostAndPort" c:host="192.168.178.88" c:port="7002"/>
+		<bean class="redis.clients.jedis.HostAndPort" c:host="192.168.178.88" c:port="7003"/>
+		<bean class="redis.clients.jedis.HostAndPort" c:host="192.168.178.88" c:port="7004"/>
+		<bean class="redis.clients.jedis.HostAndPort" c:host="192.168.178.88" c:port="7005"/>
+		<bean class="redis.clients.jedis.HostAndPort" c:host="192.168.178.88" c:port="7006"/>
+	</util:set>
+	<bean class="redis.clients.jedis.JedisCluster" c:nodes-ref="nodes" />
+	<bean class="com.taotao.order.jedis.JedisClientCluster" />
+</beans>

@@ -3,6 +3,7 @@ package com.taotao.service;
 import com.taotao.common.pojo.EasyUIDataGridResult;
 import com.taotao.common.pojo.TaotaoResult;
 import com.taotao.pojo.TbItem;
+import com.taotao.pojo.TbItemDesc;
 
 import java.util.List;
 
@@ -38,4 +39,25 @@ public interface ItemService {
      * @return TaotaoResult
      * **/
     public TaotaoResult showDesc(String id);
+
+    /**
+     * 根据itemid得到Tbitem对象
+     * @param itemId
+     * @return TbItem
+     * **/
+    public TbItem getItemById(Long itemId);
+
+    /**
+     * 根据itemid得到TbitemDesc对象
+     * @param itemId
+     * @return TbItemDesc
+     * **/
+    public TbItemDesc getItemDescById(Long itemId);
+
+    /**
+     * 根据itemid得到list
+     * @param itemId
+     * @return List<String>
+     * **/
+    public List<String> getItemCatById(Long itemId);
 }
